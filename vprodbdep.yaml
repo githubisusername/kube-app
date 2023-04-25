@@ -18,7 +18,7 @@ spec:
         - name: vprodb
           image: containerizingproject/vprofiledb:V1
           args :
-            - "--ignore-db-dir=host+found"
+            - "--ignore-db-dir=lost+found"
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: vpro-db-data
@@ -29,8 +29,8 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  key: db-pass
                   name: app-secret
+                  key: db-pass
       nodeSelector:
         zone: us-east-2a
       volumes:
